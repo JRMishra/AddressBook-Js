@@ -27,3 +27,50 @@ newContact1.phone = "9052851184";
 newContact1.email = "supdey@mymail.com";
 
 AddressBook[1] = newContact2;
+
+let status = EditContactDetails("Supratim Dey","Address","Building 6, Airport colony");
+if(status)
+    console.log("Contact details successfully edited");
+    
+function EditContactDetails(fullname, property, value)
+{
+    let index = -1;
+    for(let i = 0; i< AddressBook.length; i++)
+    {
+        if(AddressBook[i].firstname+" "+AddressBook[i].lastname == fullname)
+        {
+            index = i;
+            break;
+        }
+    }
+    if(index==-1)
+    {
+        console.log("No such contact present");
+        return false;
+    }
+    switch(property)
+    {
+        case "Address":
+            AddressBook[index].address = value;
+            break;
+        case "City":
+            AddressBook[index].city = value;
+            break;
+        case "State":
+            AddressBook[index].state = value;
+            break;
+        case "Zip":
+            AddressBook[index].zip = value;
+            break;
+        case "Phone":
+            AddressBook[index].phone = value;
+            break;
+        case "Email":
+            AddressBook[index].email = value;
+            break;
+        default:
+            return false;
+            break;
+    }
+    return true;
+}
