@@ -3,6 +3,7 @@ import Contact from './Contact.js';
 console.log("Welcome to Address Book");
 
 let AddressBook = [];
+let status;
 
 let newContact1 = new Contact();
 newContact1.firstname = "Jyoti Ranjan";
@@ -14,7 +15,11 @@ newContact1.zip = "764310";
 newContact1.phone = "8115825409";
 newContact1.email = "jrm@mymail.com";
 
-AddressBook[0] = newContact1;
+status = AddContacts(newContact1);
+if(!status)
+    console.log("Contact details added successfully");
+else
+    console.log("A contact with same name can't be added twice");
 
 let newContact2 = new Contact();
 newContact2.firstname = "Supratim";
@@ -26,9 +31,14 @@ newContact1.zip = "772074";
 newContact1.phone = "9052851184";
 newContact1.email = "supdey@mymail.com";
 
-AddressBook[1] = newContact2;
+status = AddContacts(newContact2);
+if(!status)
+    console.log("Contact details added successfully");
+else
+    console.log("A contact with same name can't be added twice");
+    
 
-let status = EditContactDetails("Supratim Dey","Address","Building 6, Airport colony");
+status = EditContactDetails("Supratim Dey","Address","Building 6, Airport colony");
 if(status)
     console.log("Contact details successfully edited");
 
@@ -39,6 +49,35 @@ if(status) console.log("Contact details successfully deleted");
 
 console.log("Number of contacts after deleting = "+ ContactsCount());
 
+status = AddContacts(newContact1);
+if(!status)
+    console.log("Contact details added successfully");
+else
+    console.log("A contact with same name can't be added twice");
+    
+status = AddContacts(newContact2);
+if(!status)
+    console.log("Contact details added successfully");
+else
+    console.log("A contact with same name can't be added twice");
+    
+//------------------------- Functions -----------------------------//
+//Add Contact Details
+function AddContacts(contact)
+{
+    let isDuplicate = false;
+    let fullname = contact.firstname + " "+contact.lastname;
+    for(let item of AddressBook)
+    {
+        if(item.firstname+" "+item.lastname == fullname)
+            isDuplicate = true;
+    }
+    if(!isDuplicate)
+        AddressBook.push(contact);
+    return isDuplicate;
+}
+
+//Edit Contact Details
 function EditContactDetails(fullname, property, value)
 {
     let index = -1;
@@ -82,6 +121,7 @@ function EditContactDetails(fullname, property, value)
     return true;
 }
 
+//Delete Contact Details
 function DeleteContact(fullname)
 {
     let index = -1;
@@ -102,6 +142,7 @@ function DeleteContact(fullname)
     return true;
 }
 
+//Count Contact Details
 function ContactsCount()
 {
     return AddressBook.length;
