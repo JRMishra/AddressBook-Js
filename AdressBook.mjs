@@ -24,12 +24,12 @@ else
 let newContact2 = new Contact();
 newContact2.firstname = "Supratim";
 newContact2.lastname = "Dey";
-newContact1.address = "Airport colony";
-newContact1.city = "Kolkata";
-newContact1.state = "WestBengal";
-newContact1.zip = "772074";
-newContact1.phone = "9052851184";
-newContact1.email = "supdey@mymail.com";
+newContact2.address = "Airport colony";
+newContact2.city = "Kolkata";
+newContact2.state = "WestBengal";
+newContact2.zip = "772074";
+newContact2.phone = "9052851184";
+newContact2.email = "supdey@mymail.com";
 
 status = AddContacts(newContact2);
 if(!status)
@@ -61,7 +61,46 @@ if(!status)
 else
     console.log("A contact with same name can't be added twice");
     
+let newContact3 = new Contact();
+newContact3.firstname = "Dibya";
+newContact3.lastname = "Panda";
+newContact3.address = "Satyasahi chowk";
+newContact3.city = "Baripada";
+newContact3.state = "Odisha";
+newContact3.zip = "772074";
+newContact3.phone = "9057312096";
+newContact3.email = "panda@mymail.com";
+status = AddContacts(newContact3);
+if(!status)
+    console.log("Contact details added successfully");
+else
+    console.log("A contact with same name can't be added twice");
+    
+let bpdContact = SearchAccrossCity("Baripada");
+console.log("Contacts in baripada are :");
+for(let c of bpdContact)
+{
+    console.log(c.firstname+" "+c.lastname);
+}
+
+let odsContact = SearchAccrossState("WestBengal");
+console.log("Contacts in WestBengal are :");
+for(let c of odsContact)
+{
+    console.log(c.firstname+" "+c.lastname);
+}
 //------------------------- Functions -----------------------------//
+
+function SearchAccrossState(state)
+{
+    return AddressBook.filter(contact => contact.state==state);
+}
+
+function SearchAccrossCity(city)
+{
+    return AddressBook.filter(contact => contact.city==city);
+}
+
 //Add Contact Details
 function AddContacts(contact)
 {
