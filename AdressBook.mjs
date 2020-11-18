@@ -31,7 +31,12 @@ AddressBook[1] = newContact2;
 let status = EditContactDetails("Supratim Dey","Address","Building 6, Airport colony");
 if(status)
     console.log("Contact details successfully edited");
-    
+
+status = DeleteContact("Supratim Dey");
+if(status)
+    console.log("Contact details successfully deleted");
+
+
 function EditContactDetails(fullname, property, value)
 {
     let index = -1;
@@ -72,5 +77,25 @@ function EditContactDetails(fullname, property, value)
             return false;
             break;
     }
+    return true;
+}
+
+function DeleteContact(fullname)
+{
+    let index = -1;
+    for(let i = 0; i< AddressBook.length; i++)
+    {
+        if(AddressBook[i].firstname+" "+AddressBook[i].lastname == fullname)
+        {
+            index = i;
+            break;
+        }
+    }
+    if(index==-1)
+    {
+        console.log("No such contact present");
+        return false;
+    }
+    AddressBook.splice(index,1);
     return true;
 }
