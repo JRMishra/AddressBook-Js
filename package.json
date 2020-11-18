@@ -1,0 +1,13 @@
+{
+  "name": "addressbook",
+  "version": "1.0.0",
+  "description": "Address Book Management Program",
+  "main": "AddressBook.js",
+  "type" : "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node addressbook"
+  },
+  "author": "J R Mishra",
+  "license": "ISC"
+}

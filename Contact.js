@@ -1,4 +1,4 @@
-class Contact
+export default class Contact
 {
     firstname;
     lastname;
@@ -76,6 +76,9 @@ class Contact
             throw "State is invalid";
     }
 
+    /**
+     * @param {string} zip
+     */
     set zip(zip){
         let zipRgx = new RegExp(/^[1-9][0-9]{5}$/);
         if(zipRgx.test(zip))
@@ -84,6 +87,9 @@ class Contact
             throw "Zip is invalid";
     }
 
+    /**
+     * @param {string} phone
+     */
     set phone(phone){
         let phoneRgx = new RegExp(/^([0-9][ ])?[1-9][0-9]{9}$/);
         if(phoneRgx.test(phone))
@@ -92,6 +98,9 @@ class Contact
             throw "Phone is invalid";
     }
 
+    /**
+     * @param {string} email
+     */
     set email(email){
         let emailRgx = new RegExp(/^[a-z0-9A-Z]+([-.+_][a-z0-9+-]+)*@[a-z0-9A-Z]+[.][a-z]{2,3}([.][a-z]{2,})?$/);
         if(emailRgx.test(email))
