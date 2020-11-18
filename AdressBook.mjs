@@ -32,10 +32,12 @@ let status = EditContactDetails("Supratim Dey","Address","Building 6, Airport co
 if(status)
     console.log("Contact details successfully edited");
 
-status = DeleteContact("Supratim Dey");
-if(status)
-    console.log("Contact details successfully deleted");
+console.log("Number of contacts in address book = "+ ContactsCount());
 
+status = DeleteContact("Supratim Dey");
+if(status) console.log("Contact details successfully deleted");
+
+console.log("Number of contacts after deleting = "+ ContactsCount());
 
 function EditContactDetails(fullname, property, value)
 {
@@ -98,4 +100,9 @@ function DeleteContact(fullname)
     }
     AddressBook.splice(index,1);
     return true;
+}
+
+function ContactsCount()
+{
+    return AddressBook.length;
 }
