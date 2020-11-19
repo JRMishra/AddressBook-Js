@@ -77,15 +77,29 @@ else
     console.log("A contact with same name can't be added twice");
     
 ViewPersonByCity("Baripada");
+console.log("Total Count : "+ CountContactByCity("Baripada")+"\n");
 
 ViewPersonByState("WestBengal");
+console.log("Total Count : "+ CountContactByState("WestBengal")+"\n");
+
 //------------------------- Functions -----------------------------//
+function CountContactByCity(city)
+{
+    let cityContact = SearchAccrossCity(city);
+    return cityContact.length;
+}
+
+function CountContactByState(state)
+{
+    let stateContact = SearchAccrossState(state);
+    return stateContact.length;
+}
 
 function ViewPersonByCity(city)
 {
-    let bpdContact = SearchAccrossCity(city);
+    let cityContact = SearchAccrossCity(city);
     console.log("Contacts in "+ city +" are :");
-    for(let c of bpdContact)
+    for(let c of cityContact)
     {
         console.log(c.firstname+" "+c.lastname);
     }
@@ -93,9 +107,9 @@ function ViewPersonByCity(city)
 
 function ViewPersonByState(state)
 {
-    let odsContact = SearchAccrossState(state);
+    let stateContact = SearchAccrossState(state);
     console.log("Contacts in "+ state +" are :");
-    for(let c of odsContact)
+    for(let c of stateContact)
     {
         console.log(c.firstname+" "+c.lastname);
     }
