@@ -82,7 +82,31 @@ console.log("Total Count : "+ CountContactByCity("Baripada")+"\n");
 ViewPersonByState("WestBengal");
 console.log("Total Count : "+ CountContactByState("WestBengal")+"\n");
 
+console.log("All Contacts before sorting");
+DisplayAllContacts();
+
+SortByContactName();
+
 //------------------------- Functions -----------------------------//
+function SortByContactName()
+{
+    AddressBook.sort((a,b)=>(a.firstname>b.firstname) ? 1 : ((a.firstname<b.firstname)?-1 : 0));
+    console.log("All Contacts after sorting");
+    DisplayAllContacts();
+}
+
+function DisplayAllContacts()
+{
+    AddressBook.forEach(contact => {
+        console.log("Name : "+contact.firstname+" "+contact.lastname);
+        console.log("Address : "+contact.address+", "+contact.city+", "+contact.state+", "+contact.zip);
+        console.log("Phone : "+contact.phone);
+        console.log("Email : "+contact.email);
+        console.log();
+    });
+    console.log("\n");
+}
+
 function CountContactByCity(city)
 {
     let cityContact = SearchAccrossCity(city);
