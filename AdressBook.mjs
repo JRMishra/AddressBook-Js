@@ -87,7 +87,34 @@ DisplayAllContacts();
 
 SortByContactName();
 
+SortByContactCity();
+
+SortByContactState();
+
+SortByContactZip();
+
 //------------------------- Functions -----------------------------//
+function SortByContactZip()
+{
+    AddressBook.sort((a,b)=>(a.zip>b.zip) ? 1 : ((a.zip<b.zip)?-1 : 0));
+    console.log("All Contacts after sorting by zip");
+    DisplayAllContacts();
+}
+
+function SortByContactState()
+{
+    AddressBook.sort((a,b)=>(a.state>b.state) ? 1 : ((a.state<b.state)?-1 : 0));
+    console.log("All Contacts after sorting by state");
+    DisplayAllContacts();
+}
+
+function SortByContactCity()
+{
+    AddressBook.sort((a,b)=>(a.city>b.city) ? 1 : ((a.city<b.city)?-1 : 0));
+    console.log("All Contacts after sorting by city");
+    DisplayAllContacts();
+}
+
 function SortByContactName()
 {
     AddressBook.sort((a,b)=>(a.firstname>b.firstname) ? 1 : ((a.firstname<b.firstname)?-1 : 0));
