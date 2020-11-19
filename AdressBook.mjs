@@ -76,20 +76,30 @@ if(!status)
 else
     console.log("A contact with same name can't be added twice");
     
-let bpdContact = SearchAccrossCity("Baripada");
-console.log("Contacts in baripada are :");
-for(let c of bpdContact)
+ViewPersonByCity("Baripada");
+
+ViewPersonByState("WestBengal");
+//------------------------- Functions -----------------------------//
+
+function ViewPersonByCity(city)
 {
-    console.log(c.firstname+" "+c.lastname);
+    let bpdContact = SearchAccrossCity(city);
+    console.log("Contacts in "+ city +" are :");
+    for(let c of bpdContact)
+    {
+        console.log(c.firstname+" "+c.lastname);
+    }
 }
 
-let odsContact = SearchAccrossState("WestBengal");
-console.log("Contacts in WestBengal are :");
-for(let c of odsContact)
+function ViewPersonByState(state)
 {
-    console.log(c.firstname+" "+c.lastname);
+    let odsContact = SearchAccrossState(state);
+    console.log("Contacts in "+ state +" are :");
+    for(let c of odsContact)
+    {
+        console.log(c.firstname+" "+c.lastname);
+    }
 }
-//------------------------- Functions -----------------------------//
 
 function SearchAccrossState(state)
 {
